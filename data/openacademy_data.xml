@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">class1.level.tree</field>
+            <field name="model">class1.level</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name" />
+                    <field name="dob" />
+                </tree>
+            </field>
+        </record>
+        <record id="view_student_form" model="ir.ui.view">
+            <field name="name">class1.level.form</field>
+            <field name="model">class1.level</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Student" create="false" edit="false" >
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="personal_information"
+                                string="Class Information" col="10" colspan="4">
+                                <group col="1" colspan="1" name="Class_detail">
+                                    <field name="name" />
+                                    <field name="dob" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+
+
+        <record model="ir.actions.act_window" id="class_view">
+            <field name="name">Class</field>
+            <field name="res_model">class1.level</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click create to - Enter your Class Information
+                </p>
+            </field>
+        </record>
+
+
+
+        <menuitem id="Academy" name="Open Academy"   />
+
+        <menuitem id="class" name="Class" parent="Academy"
+                  action="class_view"/>
+
+
+
+
+    </data>
+</odoo>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_student_tree2" model="ir.ui.view">
+            <field name="name">session.attendance.tree</field>
+            <field name="model">session.attendance</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name" />
+                    <field name="master_name" />
+                    <field name="attendance" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_form2" model="ir.ui.view">
+            <field name="name">session.attendance.form</field>
+            <field name="model">session.attendance</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Student" create="false" edit="false" >
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="Session_Information"
+                                string="Session Information" col="10" colspan="4">
+                                <group col="1" colspan="1" name="master_detail">
+                                    <field name="name" />
+                                    <field name="master_name" />
+                                    <field name="attendance" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="session_view">
+            <field name="name">Session</field>
+            <field name="res_model">session.attendance</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click create to - Enter your Session Information
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="session" name="Session" parent="Academy"
+                  action="session_view"/>
+
+
+    </data>
+</odoo>
+

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_student_tree1" model="ir.ui.view">
+            <field name="name">master.session.tree</field>
+            <field name="model">master.session</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <tree string="Student">
+                    <field name="name" />
+                    <field name="session" />
+                    <field name="level" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_student_form1" model="ir.ui.view">
+            <field name="name">master.session.form</field>
+            <field name="model">master.session</field>
+            <field name="priority" eval="8" />
+            <field name="arch" type="xml">
+                <form string="Student" create="false" edit="false" >
+                    <sheet>
+                        <notebook colspan="4">
+                            <page name="Master_Information"
+                                string="Master Information" col="10" colspan="4">
+                                <group col="1" colspan="1" name="master_detail">
+                                    <field name="name" />
+                                    <field name="session" />
+                                    <field name="level" />
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="master_view">
+            <field name="name">Master</field>
+            <field name="res_model">master.session</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create"> Click create to - Enter your Master Information
+                </p>
+            </field>
+        </record>
+
+
+        <menuitem id="master" name="Master" parent="Academy"
+                  action="master_view"/>
+
+
+    </data>
+</odoo>
+
